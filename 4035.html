@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/4035.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tradez</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="picture/Screenshot_2024-01-18_191454-removebg-preview.ico" />
+
+
+</head>
+<body>
+
+<img class="top-left" src="picture/Screenshot_2024-01-18_191454-removebg-preview.png" alt="logo" />
+
+<div class="heading">Tradez</div>
+
+<div class="search-container">
+  <input type="text" placeholder="Search..." id="searchInput" class="search-box" onkeyup="filterSuggestions()">
+  <button class="search-button" onclick="searchAction()">Search</button>
+  <div id="suggestions"></div>
+</div>
+
+<script>
+const suggestions = [
+  { name: "Plumber", url: "4035 Trades/4035plumbers.html" },
+  { name: "Electrician", url: "4035 Trades/4035electrical.html" },
+  // Add more suggestions here
+];
+
+function filterSuggestions() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const suggestionsContainer = document.getElementById('suggestions');
+
+  suggestionsContainer.innerHTML = '';
+  const filtered = suggestions.filter(suggestion => suggestion.name.toLowerCase().includes(input));
+
+  if (input === '' || filtered.length === 0) {
+    suggestionsContainer.style.display = 'none';
+    return;
+  }
+
+  filtered.forEach(item => {
+    const div = document.createElement('div');
+    div.textContent = item.name;
+    div.classList.add('suggestion-item');
+    div.onclick = function() {
+      window.location.href = item.url;
+    };
+    suggestionsContainer.appendChild(div);
+  });
+
+  suggestionsContainer.style.display = 'block';
+}
+
+function searchAction() {
+  // Implement the search action
+}
+</script>
+
+</body>
+</html>
